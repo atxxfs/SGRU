@@ -83,7 +83,7 @@ class PureGRU(nn.Module):
         A1 = self.nconv(xh, A)
         A2 = self.nconv(xh, E)
         xh = torch.cat((A1, A2), dim=2)
-        # dim reduce (B, N, 8H) --> (B, N, H)
+        # dim reduce (B, N, 4H) --> (B, N, H)
         xh = self.weight_chebyshev_connect(xh)
         # Reset/Update (B, N, H) --> (B, N, H)
         r = self.weight_reset(xh)

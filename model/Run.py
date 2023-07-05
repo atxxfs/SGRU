@@ -121,7 +121,7 @@ if torch.cuda.is_available():
 else:
     args.device = 'cpu'
 
-#init model
+# init model
 model = Network(args)
 model = model.to(args.device)
 for p in model.parameters():
@@ -157,9 +157,9 @@ if args.lr_decay:
     lr_scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer=optimizer,
                                                         milestones=lr_decay_steps,
                                                         gamma=args.lr_decay_rate)
-    #lr_scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer=optimizer, T_max=64)
+    # lr_scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer=optimizer, T_max=64)
 
-#config log path
+# config log path
 current_time = datetime.now().strftime('%Y%m%d%H%M%S')
 current_dir = os.path.dirname(os.path.realpath(__file__))
 log_dir = os.path.join(current_dir, 'experiments', args.dataset, current_time)
